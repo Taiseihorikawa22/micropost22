@@ -22,6 +22,21 @@
                             {!! Form::close() !!}
                         @endif
                     </div>
+                    <div>
+                         
+    @if (Auth::user()->is_getting($micropost->id))
+        {{-- アンフォローボタンのフォーム --}}
+        {!! Form::open(['route' => ['favorites.unfavorite', $micropost->id], 'method' => 'delete']) !!}
+            {!! Form::submit('☆', ['class' => "btn btn-danger btn-block"]) !!}
+        {!! Form::close() !!}
+    @else
+        {{-- フォローボタンのフォーム --}}
+        {!! Form::open(['route' => ['favorites.favorite', $micropost->id]]) !!}
+            {!! Form::submit('★', ['class' => "btn btn-primary btn-block"]) !!}
+        {!! Form::close() !!}
+    @endif
+
+                    </div>
                 </div>
             </li>
         @endforeach

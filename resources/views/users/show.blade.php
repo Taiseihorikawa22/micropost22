@@ -36,6 +36,12 @@
             <span class="badge badge-secondary">{{ $user->followers_count }}</span>
         </a>
     </li>
+    <li class="nav-item">
+         <a href="{{ route('users.favorites', ['id' => $user->id]) }}" class="nav-link {{ Request::routeIs('users.favorites') ? 'active' : '' }}">
+            お気に入り一覧
+            <span class="badge badge-secondary">{{ $user->microposts_count }}</span>
+        </a>
+    </li>
             </ul>
             @if (Auth::id() == $user->id)
                 {{-- 投稿フォーム --}}
